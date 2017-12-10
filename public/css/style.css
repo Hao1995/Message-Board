@@ -35,4 +35,11 @@
     border: none;
     vertical-align: middle;
     height: 50px;
+    margin: 5px 0px;
+}
+.h-form{
+    /* background-color: black; */
+    margin: auto;
+    width:100%;
+    text-align: center;
 }

@@ -11,11 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+Route::get('/', 'TaskController@index');
 
 // Route::get('/post/{id}', 'PostsController@index');
 
-// Route::resource('/task', 'TaskController');
+Route::resource('task', 'TaskController');
 

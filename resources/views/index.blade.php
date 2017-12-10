@@ -14,58 +14,28 @@
 <body>
     <div class="container h-container">
         <h2 class="h-title">CRUD APPLICATION - MESSAGE BOARD</h2>
-        <div class="row h-row">
-            <div class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-7 h-text">
-                <p>Test</p>
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
             </div>
-            <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-5 h-btn-group">
+        @endif
+        @foreach($data as $p)
+        <div class="row h-row">
+            <div class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-6 h-text">
+                <p>{{ $p['content'] }}</p>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6 h-btn-group">
                 <button class="btn btn-warning h-btn">Edit</button>
                 <button class="btn btn-danger h-btn">Delete</button>
             </div>
         </div>
+        @endforeach
         <div class="row h-row">
-            <div class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-7 h-text">
-                <p>Test</p>
-            </div>
-            <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-5 h-btn-group">
-                <button class="btn btn-warning h-btn">Edit</button>
-                <button class="btn btn-danger h-btn">Delete</button>
-            </div>
-        </div>
-        <div class="row h-row">
-            <div class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-7 h-text">
-                <p>Test</p>
-            </div>
-            <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-5 h-btn-group">
-                <button class="btn btn-warning h-btn">Edit</button>
-                <button class="btn btn-danger h-btn">Delete</button>
-            </div>
-        </div>
-        <div class="row h-row">
-            <div class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-7 h-text">
-                <p>Test</p>
-            </div>
-            <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-5 h-btn-group">
-                <button class="btn btn-warning h-btn">Edit</button>
-                <button class="btn btn-danger h-btn">Delete</button>
-            </div>
-        </div>
-        <div class="row h-row">
-            <div class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-7 h-text">
-                <p>Test</p>
-            </div>
-            <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-5 h-btn-group">
-                <button class="btn btn-warning h-btn">Edit</button>
-                <button class="btn btn-danger h-btn">Delete</button>
-            </div>
-        </div>
-        <div class="row h-row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 h-text">
-                <input type="text" name="content" value="What are you thinking?" class="h-input">
-            </div>
-        </div>
-        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-5 h-btn-group">
-            <button class="btn btn-success h-btn">Submit</button>
+            <form action="/task" method="post" class="h-form">
+                <input type="text" name="content" placeholder="What are you thinking?" class="col-xl-12 h-input">
+                <input type="submit" name="submit" class="btn btn-success h-submit">
+                {!! csrf_field() !!}
+            </form>
         </div>
     </div>
 
