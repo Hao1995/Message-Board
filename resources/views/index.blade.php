@@ -21,11 +21,18 @@
         @endif
         @foreach($data as $p)
         <div class="row h-row">
-            <div class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-6 h-text">
-                <p>{{ $p['content'] }}</p>
+            <div class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-6 h-text" >
+                <p id="data-{{$p['id']}}">{{ $p['content'] }}</p>
+                <p class="h-dataEdit" id="dataEdit-{{$p['id']}}">{{ $p['content'] }}</p>
             </div>
             <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6 h-btn-group">
-                <button class="btn btn-warning h-btn">Edit</button>
+                <button id="h-edit" class="btn btn-warning h-btn" value="{{$p['id']}}">Edit</button>
+                <!-- <form method="post" action="/task/{{$p->id}}">
+                    <input type="hidden" name="_method" value="PUT">
+                    <input type="text" name="title" placeholder="Enter title" value="{{$p->content}}">
+                    <input type="submit" name="submit">
+                    {!! csrf_field() !!}
+                </form> -->
                 <button class="btn btn-danger h-btn">Delete</button>
             </div>
         </div>
@@ -39,6 +46,7 @@
         </div>
     </div>
 
+    <script src="{{ asset('js/javascript.js') }}" ></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

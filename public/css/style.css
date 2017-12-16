@@ -43,3 +43,7 @@
     width:100%;
     text-align: center;
 }
+.h-dataEdit{
+    display: none;
+    background-color: gray;
+}
