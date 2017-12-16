@@ -20,27 +20,26 @@
             </div>
         @endif
         @foreach($data as $p)
-        <div class="row h-row">
-            <div class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-6 h-text" >
-                <p id="data-{{$p['id']}}">{{ $p['content'] }}</p>
-                <p class="h-dataEdit" id="dataEdit-{{$p['id']}}">{{ $p['content'] }}</p>
-            </div>
-            <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6 h-btn-group">
-                <button id="h-edit" class="btn btn-warning h-btn" value="{{$p['id']}}">Edit</button>
-                <!-- <form method="post" action="/task/{{$p->id}}">
+        <!-- <div class="row h-row"> -->
+            <form class="row h-row" method="post" action="/task/{{$p['id']}}">
+                <div class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-6 h-text" >
+                    <p id="data-{{$p['id']}}" class="h-data">{{ $p['content'] }}</p>
                     <input type="hidden" name="_method" value="PUT">
-                    <input type="text" name="title" placeholder="Enter title" value="{{$p->content}}">
-                    <input type="submit" name="submit">
-                    {!! csrf_field() !!}
-                </form> -->
-                <button class="btn btn-danger h-btn">Delete</button>
-            </div>
-        </div>
+                    <input type="text" name="content" placeholder="Enter title" class="h-dataEdit" id="dataEdit-{{$p['id']}}" value="{{$p['content']}}">
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6 h-btn-group">
+                    <input type="submit" name="submit" value="Submit" id="h-put-submit-{{$p['id']}}" class="btn btn-info h-btn" style="display:none;">
+                    <button type="button" id="h-edit" class="btn btn-warning h-btn" value="{{$p['id']}}">Edit</button>
+                    <button id="h-put-delete-{{$p['id']}}" class="btn btn-danger h-btn">Delete</button>
+                </div>
+                {!! csrf_field() !!}
+            </form>
+        <!-- </div> -->
         @endforeach
         <div class="row h-row">
             <form action="/task" method="post" class="h-form">
                 <input type="text" name="content" placeholder="What are you thinking?" class="col-xl-12 h-input">
-                <input type="submit" name="submit" value="Submit" class="btn btn-success h-submit">
+                <input type="submit" name="submit" value="Submit" id="h-post-submit-{{$p['id']}}" class="btn btn-success h-submit">
                 {!! csrf_field() !!}
             </form>
         </div>

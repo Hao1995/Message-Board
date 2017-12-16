@@ -82,6 +82,11 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $task = Task::findOrFail($id);
+        $task->update($request->all());
+
+        // return redirect()->back()->with('message', 'IT WORKS!');
+        return redirect()->back()->with('message', 'Updated Successful!');
     }
 
     /**
