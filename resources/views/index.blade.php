@@ -33,7 +33,7 @@
         <div class="row h-row">
             <form action="/task" method="post" class="h-form">
                 <input type="text" name="content" placeholder="What are you thinking?" class="col-xl-12 h-input">
-                <input type="submit" name="submit" class="btn btn-success h-submit">
+                <input type="submit" name="submit" value="Submit" class="btn btn-success h-submit">
                 {!! csrf_field() !!}
             </form>
         </div>
