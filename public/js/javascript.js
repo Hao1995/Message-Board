@@ -1,10 +1,5 @@
 console.log("Loading Successful !!");
 window.onload = function(){ 
-    // var getTest = document.getElementById('h-edit').onclick = function() {
-    //     this.style.backgroundColor = "red";
-    //     console.log("value >> ",this.getAttribute("value"))
-    //     console.log("Edited Successful !!!");
-    // };
     
     var hEditElements = document.querySelectorAll("#h-edit")
     hEditElements.forEach(function(elem){
@@ -16,6 +11,7 @@ window.onload = function(){
         var putSubmit = document.getElementById("h-put-submit-"+this.getAttribute('value'))
         var putDelete = document.getElementById("h-put-delete-"+this.getAttribute('value'))
         
+        //Can use "toggle" to achieve the function
         if (dataEditAtt.style.display != "block") {
             dataAtt.style.display = "none";
             dataEditAtt.style.display = "block";

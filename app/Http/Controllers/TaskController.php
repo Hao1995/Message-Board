@@ -98,5 +98,9 @@ class TaskController extends Controller
     public function destroy($id)
     {
         //
+        $task = Task::findOrFail($id);
+        $task->delete();
+        // $task = task::whereId($id)->delete();
+        return redirect()->back()->with('message', 'Deleted Successful!');
     }
 }

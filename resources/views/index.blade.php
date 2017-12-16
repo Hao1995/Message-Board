@@ -20,21 +20,24 @@
             </div>
         @endif
         @foreach($data as $p)
-        <!-- <div class="row h-row"> -->
             <form class="row h-row" method="post" action="/task/{{$p['id']}}">
-                <div class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-6 h-text" >
+                <div class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-5 h-text" >
                     <p id="data-{{$p['id']}}" class="h-data">{{ $p['content'] }}</p>
                     <input type="hidden" name="_method" value="PUT">
                     <input type="text" name="content" placeholder="Enter title" class="h-dataEdit" id="dataEdit-{{$p['id']}}" value="{{$p['content']}}">
                 </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6 h-btn-group">
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-7 h-btn-group">
                     <input type="submit" name="submit" value="Submit" id="h-put-submit-{{$p['id']}}" class="btn btn-info h-btn" style="display:none;">
                     <button type="button" id="h-edit" class="btn btn-warning h-btn" value="{{$p['id']}}">Edit</button>
-                    <button id="h-put-delete-{{$p['id']}}" class="btn btn-danger h-btn">Delete</button>
+
+                    <form action="/task/{{$p['id']}}">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="submit" value="Delete" id="h-put-delete-{{$p['id']}}" class="btn btn-danger h-btn">
+                        {!! csrf_field() !!}
+                    </form>
                 </div>
                 {!! csrf_field() !!}
             </form>
-        <!-- </div> -->
         @endforeach
         <div class="row h-row">
             <form action="/task" method="post" class="h-form">
