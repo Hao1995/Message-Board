@@ -9,6 +9,8 @@ Relational skills:
     - bootstrap
 3. mysql
 
+![CRUD_Messages](https://github.com/Hao1995/Message-Board/blob/master/crud-messages.gif "CRUD_Messages")
+
 ## Flow
 ``
 > git clone git@github.com:Hao1995/Message-Board.git

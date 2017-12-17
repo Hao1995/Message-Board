@@ -15,31 +15,34 @@
     <div class="container h-container">
         <h2 class="h-title">CRUD APPLICATION - MESSAGE BOARD</h2>
         @if(session()->has('message'))
-            <div class="alert alert-success">
+            <div class="alert alert-success h-row-2">
                 {{ session()->get('message') }}
             </div>
         @endif
         @foreach($data as $p)
-            <form class="row h-row" method="post" action="/task/{{$p['id']}}">
-                <div class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-5 h-text" >
-                    <p id="data-{{$p['id']}}" class="h-data">{{ $p['content'] }}</p>
-                    <input type="hidden" name="_method" value="PUT">
-                    <input type="text" name="content" placeholder="Enter title" class="h-dataEdit" id="dataEdit-{{$p['id']}}" value="{{$p['content']}}">
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-7 h-btn-group">
-                    <input type="submit" name="submit" value="Submit" id="h-put-submit-{{$p['id']}}" class="btn btn-info h-btn" style="display:none;">
-                    <button type="button" id="h-edit" class="btn btn-warning h-btn" value="{{$p['id']}}">Edit</button>
-
-                    <form action="/task/{{$p['id']}}">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="submit" value="Delete" id="h-put-delete-{{$p['id']}}" class="btn btn-danger h-btn">
-                        {!! csrf_field() !!}
-                    </form>
-                </div>
+        <div class="row h-row-0">
+            <form method="post" action="/task/{{$p['id']}}" class="h-delete-form">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="X" id="h-delete-submit-{{$p['id']}}" class="btn btn-danger h-btn h-delete-submit">
                 {!! csrf_field() !!}
             </form>
+            <div class="row h-row-1">
+                <form method="post" action="/task/{{$p['id']}}" class="h-form-edit">
+                    <div class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-5 h-text" >
+                        <p id="data-{{$p['id']}}" class="h-data">{{ $p['content'] }}</p>
+                        <input type="hidden" name="_method" value="PUT">
+                        <input type="text" name="content" placeholder="Enter title" class="h-dataEdit" id="dataEdit-{{$p['id']}}" value="{{$p['content']}}">
+                    </div><!--  
+                    --><div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-7 h-btn-group">
+                        <input type="submit" name="submit" value="Submit" id="h-put-submit-{{$p['id']}}" class="btn btn-info h-btn" style="display:none;">
+                        <button type="button" id="h-edit" class="btn btn-warning h-btn" value="{{$p['id']}}">Edit</button>
+                    </div>
+                    {!! csrf_field() !!}
+                </form>
+            </div>
+        </div>
         @endforeach
-        <div class="row h-row">
+        <div class="row h-row-2">
             <form action="/task" method="post" class="h-form">
                 <input type="text" name="content" placeholder="What are you thinking?" class="col-xl-12 h-input">
                 <input type="submit" name="submit" value="Submit" id="h-post-submit-{{$p['id']}}" class="btn btn-success h-submit">
