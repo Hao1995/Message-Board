@@ -47,7 +47,7 @@ class TaskController extends Controller
     {
         // 
         Task::create($request->all());
-        return redirect()->back()->with('message', 'IT WORKS!');
+        return redirect()->back()->with('message', 'Success message!');
     }
 
     /**
@@ -85,7 +85,6 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         $task->update($request->all());
 
-        // return redirect()->back()->with('message', 'IT WORKS!');
         return redirect()->back()->with('message', 'Updated Successful!');
     }
 
@@ -102,7 +101,6 @@ class TaskController extends Controller
         // $task->delete();
         // // $task = task::whereId($id)->delete();
         // return redirect()->back()->with('message', 'Deleted Successful!');
-        // return "Yes, You're here !!";
         
         $task = Task::findOrFail($id);
         $task->delete();
