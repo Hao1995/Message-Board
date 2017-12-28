@@ -1,28 +1,19 @@
-console.log("Loading Successful !!");
+console.log('Loading Successful !!');
 
-$(document).ready(function(){ 
+$(document).ready(function () {
+    $('[id=h-edit]').click(function () {
+        const hEdit = $(this).attr('value');
+        const dataDisplay = $('#data-' + hEdit);
+        const dataEdit = $('#dataEdit-' + hEdit);
+        const putSubmit = $('#h-put-submit-' + hEdit);
+        const rowLeft = $('.h-row-left-' + hEdit);
+        const rowRight = $('.h-row-right-' + hEdit);
 
-    $("[id=h-edit]").click(function(){
-        var dataAtt = $("#data-"+$(this).attr("value"))
-        var dataEditAtt = $("#dataEdit-"+$(this).attr("value"))
-        var putSubmit = $("#h-put-submit-"+$(this).attr("value"))
-        var rowLeft = $(".h-row-left-"+$(this).attr("value"))
-        var rowRight = $(".h-row-right-"+$(this).attr("value"))
-
-        if(dataEditAtt.css("display") != "block"){
-            dataAtt.css("display","none");
-            dataEditAtt.css("display","block");
-            putSubmit.css("display","inline-block");
-            $(this).text("Cancel");
-            $(this).toggleClass("btn-warning");
-            $(this).toggleClass("btn-danger");
-        }else{
-            dataAtt.css("display","block");
-            dataEditAtt.css("display","none");
-            putSubmit.css("display","none");
-            $(this).text("Edit");
-            $(this).toggleClass("btn-warning");
-            $(this).toggleClass("btn-danger");
-        }
-    })
+        dataDisplay.toggleClass('h-display-none');
+        dataEdit.toggleClass('h-display-none');
+        putSubmit.toggleClass('h-display-none');
+        $(this).toggleClass('h-put-submit');
+        $(this).toggleClass('btn-warning');
+        $(this).toggleClass('btn-danger');
+    });
 });

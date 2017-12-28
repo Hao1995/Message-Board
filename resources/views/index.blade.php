@@ -32,12 +32,12 @@
                     <tr>
                         <th class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-8 h-text h-row-left-{{$p['id']}}">
                             <p id="data-{{$p['id']}}" class="h-data">{{ $p['content'] }}</p>
-                                <input type="hidden" name="_method" value="PUT">
-                                <input type="text" name="content" placeholder="Enter title" class="h-dataEdit" id="dataEdit-{{$p['id']}}" value="{{$p['content']}}">
+                            <input type="hidden" name="_method" value="PUT">
+                            <input type="text" name="content" placeholder="Enter title" class="h-dataEdit h-display-none" id="dataEdit-{{$p['id']}}" value="{{$p['content']}}">
                         </th>
                         <th class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-4 h-btn-group h-row-right-{{$p['id']}}">
-                            <input type="submit" name="submit" value="Submit" id="h-put-submit-{{$p['id']}}" class="btn btn-info h-btn" style="display:none">
-                            <button type="button" id="h-edit" class="btn btn-warning h-btn" value="{{$p['id']}}">Edit</button>
+                            <input type="submit" name="submit" value="Submit" id="h-put-submit-{{$p['id']}}" class="btn btn-info h-btn h-display-none" >
+                            <button type="button" id="h-edit" class="btn btn-warning h-btn" value="{{$p['id']}}"><span>Edit</span></button>
                         </th>
                     </tr>
                 </table>
