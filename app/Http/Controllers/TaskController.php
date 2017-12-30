@@ -22,8 +22,6 @@ class TaskController extends Controller
 
         // return view('index', ['data' => $data]);
         return view('index', compact('data'));
-        // return view('index');
-        // return "test";
     }
 
     /**
