@@ -54,7 +54,20 @@
         @endif
         <div class="row h-row-2">
             <form action="/task" method="post" class="h-form">
-                <input type="text" name="content" placeholder="What are you thinking?" class="col-xl-12 h-input">
+                <table class="h-table">
+                    <tr>
+                        <th class="col-xl-10 h-th">
+                            <input type="text" name="content" placeholder="What are you thinking?" class="h-input">
+                        </th>
+                        <th class="col-xl-2 h-th">
+                            <select name="level" class="h-selector">
+                                <option value="0">Public</option>
+                                <option value="1">Private</option>
+                                <option value="2">Hidden</option>
+                            </select>
+                        </th>
+                    </tr>
+                </table>
                 <input type="submit" name="submit" value="Submit" class="btn btn-success h-submit">
                 {!! csrf_field() !!}
             </form>
