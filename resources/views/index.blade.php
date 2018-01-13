@@ -14,6 +14,7 @@
             </div>
         @else 
             @foreach($data as $p)
+                @if((empty($user) && $p['level']==0) || (!empty($user) && $user['id'] != 1 && ($p['level']==0 || $p['level']==1)) || $user['id']==1)
                 <div class="row h-row-0">
                     @if($user['id'] == 1)
                     <form method="post" action="/task/{{$p['id']}}" class="h-delete-form">
@@ -50,6 +51,7 @@
                         </form>
                     </div>
                 </div>
+                @endif
             @endforeach
         @endif
         @if($user['id'] == 1)
