@@ -15,23 +15,29 @@
         @else 
             @foreach($data as $p)
                 <div class="row h-row-0">
+                    @if($user['id'] == 1)
                     <form method="post" action="/task/{{$p['id']}}" class="h-delete-form">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="submit" value="X" id="h-delete-submit-{{$p['id']}}" class="btn btn-danger h-btn h-delete-submit">
                         {!! csrf_field() !!}
                     </form>
+                    @endif
                     <div class="row h-row-1">
                         <form method="post" action="/task/{{$p['id']}}" class="h-form-edit">
                         <table class="h-table">
                             <tr>
                                 <th class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-8 h-text h-row-left-{{$p['id']}}">
                                     <p id="data-{{$p['id']}}" class="h-data">{{ $p['content'] }}</p>
+                                    @if($user['id'] == 1)
                                     <input type="hidden" name="_method" value="PUT">
                                     <input type="text" name="content" placeholder="Enter title" class="h-dataEdit h-display-none" id="dataEdit-{{$p['id']}}" value="{{$p['content']}}">
+                                    @endif
                                 </th>
                                 <th class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-4 h-btn-group h-row-right-{{$p['id']}}">
+                                    @if($user['id'] == 1)
                                     <input type="submit" name="submit" value="Submit" id="h-put-submit-{{$p['id']}}" class="btn btn-info h-btn h-display-none" >
                                     <button type="button" id="h-edit" class="btn btn-warning h-btn" value="{{$p['id']}}"><span>Edit</span></button>
+                                    @endif
                                 </th>
                             </tr>
                         </table>
@@ -41,6 +47,7 @@
                 </div>
             @endforeach
         @endif
+        @if($user['id'] == 1)
         <div class="row h-row-2">
             <form action="/task" method="post" class="h-form">
                 <table class="h-table">
@@ -61,5 +68,6 @@
                 {!! csrf_field() !!}
             </form>
         </div>
+        @endif
     </div>
 @endsection

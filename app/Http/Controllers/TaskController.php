@@ -6,6 +6,7 @@ use App\Task;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -19,9 +20,10 @@ class TaskController extends Controller
         //
         // $data = Task::table('tasks')->get();
         $data = Task::all();
+        $user = Auth::user();
 
         // return view('index', ['data' => $data]);
-        return view('index', compact('data'));
+        return view('index', compact('data','user'));
     }
 
     /**
