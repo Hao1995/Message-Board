@@ -13,7 +13,7 @@ class CreateFileTable extends Migration
     public function up()
     {
         //
-        Schema::create('file', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
             $table->integer('user_id')->unsigned();
@@ -31,9 +31,9 @@ class CreateFileTable extends Migration
     public function down()
     {
         //
-        Schema::table('file', function ($table) {
+        Schema::table('files', function ($table) {
             $table->dropForeign('file_user_id_foreign');
         });
-        Schema::drop('file');
+        Schema::drop('files');
     }
 }

@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\File;
 use Illuminate\Http\Request;
+use App\Http\Requests;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 class FileController extends Controller
 {
@@ -24,7 +29,16 @@ class FileController extends Controller
      */
     public function index()
     {
-        return view('file');
+        $user_id = Auth::user()->id;
+        $files = DB::table('files')
+            ->join('users', 'files.user_id', '=', 'users.id')
+            ->select('files.name')
+            ->where('users.id', $user_id)
+            ->get();    
+        // $data = File::all();
+        
+        
+        return view('file', compact('files'));
     }
 
     public function upload()
@@ -37,13 +51,16 @@ class FileController extends Controller
 
         if (Input::hasFile('user_icon_file')) {
             $upload_success = $file->move($destination_path, $file_name);
-            echo "upload success!";
+            $user = Auth::user();
+            $file = new File();
+            //On left field name in DB and on right field name in Form/view
+            $file->name = $file_name;
+            $file->user_id = $user->id;
+            $file->save();
+            
+            return redirect()->back()->withSuccess('Success Upload!');
         } else {
-            echo "upload failed!";
+            return redirect()->back()->with('error','Fail to Upload!');
         }
-
-        $user_obj = Auth::user();
-        $user_obj->user_icon = $file_name;
-        $user_obj->save();
     }
 }
