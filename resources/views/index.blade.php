@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="container h-container">
-        <h2 class="h-title">CRUD APPLICATION - MESSAGE BOARD</h2>
         @if(session()->has('message'))
             <div class="alert alert-success h-row-2">
                 {{ session()->get('message') }}

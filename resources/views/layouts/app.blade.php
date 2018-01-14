@@ -42,7 +42,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    Message Board
                 </a>
             </div>
 
@@ -51,6 +51,9 @@
                 <!-- <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
                 </ul> -->
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/file') }}">Upload</a></li>
+                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">

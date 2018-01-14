@@ -24,4 +24,5 @@ Route::resource('task', 'TaskController');
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/file', 'FileController@index');
+Route::post('/file', 'FileController@upload');
