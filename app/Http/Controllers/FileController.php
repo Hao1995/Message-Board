@@ -37,7 +37,6 @@ class FileController extends Controller
             ->get();    
         // $data = File::all();
         
-        
         return view('file', compact('files'));
     }
 

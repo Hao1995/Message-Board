@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -19,8 +20,29 @@ class TaskController extends Controller
     {
         //
         // $data = Task::table('tasks')->get();
-        $data = Task::all();
         $user = Auth::user();
+        // $data = Task::all();
+        if ( empty($user) ) {
+            $data = DB::table('tasks')
+            ->select('id','content','level')
+            ->where('level', '=', 0)
+            ->get();  
+        }else if ( $user->id == 1) {
+            // $files = DB::table('tasks')
+            // ->join('users', 'files.user_id', '=', 'users.id')
+            // ->select('files.content')
+            // ->where('users.id', $user_id)
+            // ->get();   
+            $data = DB::table('tasks')->get(); 
+        }else if ( $user->id != 1) {
+            $data = DB::table('tasks')
+            ->select('id','content','level')
+            ->whereIn('level', [0,1])
+            ->get();  
+        }
+
+        // $user_id = Auth::user()->id;
+        
 
         // return view('index', ['data' => $data]);
         return view('index', compact('data','user'));
