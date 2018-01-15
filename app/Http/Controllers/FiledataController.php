@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Filedata;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use File;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -30,9 +31,9 @@ class FiledataController extends Controller
     public function index()
     {
         $user_id = Auth::user()->id;
-        $files = DB::table('files')
-            ->join('users', 'files.user_id', '=', 'users.id')
-            ->select('files.name')
+        $files = DB::table('filedatas')
+            ->join('users', 'filedatas.user_id', '=', 'users.id')
+            ->select('filedatas.name','filedatas.id')
             ->where('users.id', $user_id)
             ->get();    
         // $data = File::all();
@@ -51,7 +52,7 @@ class FiledataController extends Controller
         if (Input::hasFile('user_icon_file')) {
             $upload_success = $file->move($destination_path, $file_name);
             $user = Auth::user();
-            $file = new File();
+            $file = new Filedata();
             //On left field name in DB and on right field name in Form/view
             $file->name = $file_name;
             $file->user_id = $user->id;
@@ -65,8 +66,8 @@ class FiledataController extends Controller
 
     public function destroy($filename) 
     {
-        File::delete('user-upload/' . $image_url);
-        // echo "$filename";
+        File::delete('user-upload/' . $filename);
+        DB::table('filedatas')->where('name', '=', $filename)->delete();
         return redirect()->back()->with('message', 'Deleted Successful!');
     }
 }

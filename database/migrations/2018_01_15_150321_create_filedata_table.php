@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFileTable extends Migration
+class CreateFiledataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateFileTable extends Migration
     public function up()
     {
         //
-        Schema::create('files', function (Blueprint $table) {
+        Schema::create('filedatas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
             $table->integer('user_id')->unsigned();
@@ -31,9 +31,9 @@ class CreateFileTable extends Migration
     public function down()
     {
         //
-        Schema::table('files', function ($table) {
-            $table->dropForeign('file_user_id_foreign');
+        Schema::table('filedatas', function ($table) {
+            $table->dropForeign('filedatas_user_id_foreign');
         });
-        Schema::drop('files');
+        Schema::drop('filedatas');
     }
 }

@@ -27,12 +27,7 @@ class TaskController extends Controller
             ->select('id','content','level')
             ->where('level', '=', 0)
             ->get();  
-        }else if ( $user->id == 1) {
-            // $files = DB::table('tasks')
-            // ->join('users', 'files.user_id', '=', 'users.id')
-            // ->select('files.content')
-            // ->where('users.id', $user_id)
-            // ->get();   
+        }else if ( $user->id == 1) { 
             $data = DB::table('tasks')->get(); 
         }else if ( $user->id != 1) {
             $data = DB::table('tasks')
