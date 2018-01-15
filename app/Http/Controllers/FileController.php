@@ -62,4 +62,11 @@ class FileController extends Controller
             return redirect()->back()->with('error','Fail to Upload!');
         }
     }
+
+    public function destroy($filename) 
+    {
+        File::delete('user-upload/' . $image_url);
+        // echo "$filename";
+        return redirect()->back()->with('message', 'Deleted Successful!');
+    }
 }

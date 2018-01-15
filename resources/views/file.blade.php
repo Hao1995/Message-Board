@@ -14,9 +14,9 @@
     @endif
     @foreach($files as $file)
     <div class="row h-row-0">
-        <form method="post" action="/" class="h-delete-form">
+        <form method="post" action="/file/{{ $file->name }}" class="h-delete-form">
             <input type="hidden" name="_method" value="DELETE">
-            <input type="submit" value="X" id="h-delete-submit-" class="btn btn-danger h-btn h-delete-submit">
+            <input type="submit" value="X" id="h-delete-submit-{{ $file->name }}" class="btn btn-danger h-btn h-delete-submit">
             {!! csrf_field() !!}
         </form>
         <div class="row h-row-1">
