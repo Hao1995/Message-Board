@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\File;
+use App\Filedata;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 
-class FileController extends Controller
+class FiledataController extends Controller
 {
     /**
      * Create a new controller instance.

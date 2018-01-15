@@ -24,6 +24,6 @@ Route::resource('task', 'TaskController');
 
 Route::auth();
 
-Route::get('/file', 'FileController@index');
-Route::post('/file', 'FileController@upload');
-Route::delete('/file/{filename}', 'FileController@destroy');
+Route::get('/filedata', 'FiledataController@index');
+Route::post('/filedata', 'FiledataController@upload');
+Route::delete('/filedata/{filename}', 'FiledataController@destroy');
