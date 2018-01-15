@@ -2,10 +2,18 @@
 
 @section('content')
     <div class="container h-container">
-        @if(session()->has('message'))
-            <div class="alert alert-success h-row-2">
-                {{ session()->get('message') }}
-            </div>
+        @if( Session::has( 'success' ) )
+        <div class="alert alert-success h-row-2">
+            {{ Session::get( 'success' ) }}
+        </div>
+        @elseif( Session::has( 'info' ) )
+        <div class="alert alert-info h-row-2">
+            {{ Session::get( 'info' ) }}
+        </div>
+        @elseif( Session::has( 'error' ) )
+        <div class="alert alert-danger h-row-2">
+            {{ Session::get( 'error' ) }}
+        </div>
         @endif
         @if(count($data)<=0)
             <div class="row h-row-2">
