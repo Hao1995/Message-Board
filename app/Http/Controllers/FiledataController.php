@@ -58,9 +58,9 @@ class FiledataController extends Controller
             $file->user_id = $user->id;
             $file->save();
             
-            return redirect()->back()->withSuccess('Success Upload!');
+            return redirect()->back()->with('success', 'Upload Successful!');
         } else {
-            return redirect()->back()->with('error','Fail to Upload!');
+            return redirect()->back()->with('error', 'Fail to Upload!');
         }
     }
 
@@ -68,6 +68,6 @@ class FiledataController extends Controller
     {
         File::delete('user-upload/' . $filename);
         DB::table('filedatas')->where('name', '=', $filename)->delete();
-        return redirect()->back()->with('message', 'Deleted Successful!');
+        return redirect()->back()->with('error', 'Deleted Successful!');
     }
 }
