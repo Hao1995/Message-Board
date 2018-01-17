@@ -21,6 +21,7 @@
     margin: 0px;
     border-radius: 5px;
     width: calc(100% - 40px);
+    display: inline-block;
 }
 .h-row-2{
     margin: 0px;
@@ -114,11 +115,15 @@
     padding: 5px;
     color: white;
 }
-.h-selector{
+.h-row-2 .h-selector{
     border: none;
     margin: 5px;
     width: calc(100% - 10px);
     padding: 10px;
     border-radius: 5px;
     height: 50px;
+}
+.h-row-1 .h-selector{
+    border: none;
+    border-radius: 5px;
 }
