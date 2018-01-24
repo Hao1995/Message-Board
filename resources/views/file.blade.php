@@ -20,7 +20,7 @@
             {!! csrf_field() !!}
         </form>
         <div class="row h-row-1">
-            <a class="h-data" target="_blank" href="/user-upload/{{ $file->name }}">{{ $file->name }}</p>
+            <a class="h-data h-file" target="_blank" href="/user-upload/{{ $file->name }}">{{ $file->name }}</a>
         </div>
     </div>
     @endforeach
