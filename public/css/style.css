@@ -61,12 +61,13 @@
     width:100%;
     text-align: center;
 }
-.h-data{
+.h-data, .h-file{
     margin: auto;
     display: block;
 }
 .h-file{
     padding-top: 15px;
+    margin: 0 10px;
 }
 .h-dataEdit{
     border-radius: 5px;

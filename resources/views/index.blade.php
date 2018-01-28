@@ -37,12 +37,12 @@
                                         <p id="data-{{$p->id}}" class="h-data">{{ $p->content }}</p>
                                         @if($user['id'] == 1)
                                         <input type="hidden" name="_method" value="PUT">
+                                        <input type="text" name="content" placeholder="Enter title" class="h-dataEdit h-display-none" id="dataEdit-{{$p->id}}" value="{{$p->content}}">
                                         <select name="level" class="h-selector" id="h-level-{{$p->id}}">
                                             <option value="0" {{($p->level == 0 ? "selected":"") }}>Public</option>
                                             <option value="1" {{($p->level == 1 ? "selected":"") }}>Private</option>
                                             <option value="2" {{($p->level == 2 ? "selected":"") }}>Hidden</option>
                                         </select>
-                                        <input type="text" name="content" placeholder="Enter title" class="h-dataEdit h-display-none" id="dataEdit-{{$p->id}}" value="{{$p->content}}">
                                         @endif
                                     </th>
                                     <th class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-4 h-btn-group h-row-right-{{$p->id}}">
